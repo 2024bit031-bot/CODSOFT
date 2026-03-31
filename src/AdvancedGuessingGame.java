@@ -21,7 +21,7 @@ public class AdvancedGuessingGame {
     }
 
     public void start() {
-        System.out.println("🎮 Welcome to Advanced Number Guessing Game!");
+        System.out.println(" Welcome to Advanced Number Guessing Game!");
 
         chooseDifficulty();
 
@@ -29,13 +29,13 @@ public class AdvancedGuessingGame {
             playRound();
             roundsPlayed++;
 
-            System.out.println("\n📊 Score: " + score);
-            System.out.println("🏆 Best Score: " + bestScore);
+            System.out.println("\n Score: " + score);
+            System.out.println(" Best Score: " + bestScore);
 
             System.out.print("\nPlay again? (y/n): ");
             if (!scanner.next().equalsIgnoreCase("y")) {
                 saveHighScore();
-                System.out.println("👋 Thanks for playing!");
+                System.out.println(" Thanks for playing!");
                 break;
             }
         }
@@ -64,13 +64,13 @@ public class AdvancedGuessingGame {
         int number = random.nextInt(max - min + 1) + min;
         int attempts = 0;
 
-        System.out.println("\n🎯 Guess the number between " + min + " and " + max);
+        System.out.println("\n Guess the number between " + min + " and " + max);
 
         while (attempts < maxAttempts) {
             System.out.print("Enter guess: ");
 
             if (!scanner.hasNextInt()) {
-                System.out.println("⚠️ Enter a valid number!");
+                System.out.println(" Enter a valid number!");
                 scanner.next();
                 continue;
             }
@@ -79,7 +79,7 @@ public class AdvancedGuessingGame {
             attempts++;
 
             if (guess == number) {
-                System.out.println("✅ Correct!");
+                System.out.println(" Correct!");
                 int roundScore = (maxAttempts - attempts + 1);
                 score += roundScore;
 
@@ -89,18 +89,18 @@ public class AdvancedGuessingGame {
 
                 return;
             } else if (guess < number) {
-                System.out.println("📉 Too low!");
+                System.out.println(" Too low!");
             } else {
-                System.out.println("📈 Too high!");
+                System.out.println(" Too high!");
             }
 
             System.out.println("Attempts left: " + (maxAttempts - attempts));
         }
 
-        System.out.println("❌ You lost! The number was: " + number);
+        System.out.println(" You lost! The number was: " + number);
     }
 
-    // 💾 Save high score to file
+    //  Save high score to file
     private void saveHighScore() {
         try (FileWriter writer = new FileWriter(FILE_NAME)) {
             writer.write(String.valueOf(bestScore));
@@ -109,7 +109,7 @@ public class AdvancedGuessingGame {
         }
     }
 
-    // 📂 Load high score from file
+    //  Load high score from file
     private void loadHighScore() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             bestScore = Integer.parseInt(reader.readLine());
